@@ -1,0 +1,37 @@
+Creating an IoT security challenge
+
+Initial thoughts
+Limitations: most steps should be possible to solve only using an iPhone/android
+
+Draft: BT, wifi, servers located on internet possible to use. Perhaps use a nodeMCU? MQTT would be nice. Toolset very limited, use SSID/pass and monitor feedback? Something like;
+Trying to access wireless network..... nothing found
+Trying to access wireless network... found MattiasIPhone. SSID pattern match, password wrong
+Trying to access wireless network... found securityfest. No SSID pattern match
+etc etc
+
+Perhaps multiple NodeMCUs? Acting as client and server
+Last flag is to start siren/blinkenlights or somthin’
+
+An intercepting proxy for iOS/Android would be nice but nothing found.
+
+Scenario: The attacker is an attendant at a security conference without any other tools except the smart phone. There is a pretty easy challenge in one of the sponsor booths and I want to join. 
+
+Available tools:
+SSH-terminal
+Hotspot/internet sharing
+MQTT client
+
+
+SOLUTION
+The intended way to solve the puzzle
+
+Step 1. Look at the debug display of sensor 1. It's is possible to find clues to  patterns of valid SSIDs that the sensor will connect to. Create an adhoc network on your phone matching the pattern. That enables the sensor 1 to try to connect to the wifi. 
+
+Step 2. Sensor 1 uses a preshared password. Find the passwords that are valid. There are some hints in the debug. 
+
+Step 3. Sensor 1 connects to the mqtt server and the hostname is revealed in the debug display.
+
+Step 4. Connect to the host using MQTT client - read # to find information on how to enable the led on S2.
+
+Step 5. Messages to S3 are “encrypted”. Find out how and enable led on S3.
+
